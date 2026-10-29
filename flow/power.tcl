@@ -16,7 +16,8 @@
 
 read_liberty $::env(LIB)
 read_verilog $::env(NETLIST)
-link_design  mul_wrap
+# Top module: mul_wrap, or systolic_array for the array (env TOP).
+link_design  [expr {[info exists ::env(TOP)] ? $::env(TOP) : "mul_wrap"}]
 
 # Same constraints as timing; the clock period comes from CLK_NS.
 read_sdc     [file join [file dirname [info script]] mul_wrap.sdc]

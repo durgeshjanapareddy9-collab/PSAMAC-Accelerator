@@ -8,6 +8,10 @@ __pycache__/
 # (Small CSVs and tool_versions.txt in results/ ARE committed.)
 results/*.npy
 results/rtl_dump_*.txt
+results/pe_dump_*.txt
+results/array_dump_*.txt
+# TruMD is fetched by baselines/trumd/fetch.sh (no licence: never committed)
+baselines/trumd/upstream/
 results/*.vcd
 results/*.saif
 results/synth/*.v

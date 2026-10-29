@@ -1,0 +1,10 @@
+design,family,label,has_rtl,reference_model,mismatches,pass,lut_min,lut_max
+evo_1446,evo,EvoApprox mul8u_1446,True,own C model,0,True,0,65217
+evo_GS2,evo,EvoApprox mul8u_GS2,True,own C model,0,True,0,64755
+evo_185Q,evo,EvoApprox mul8u_185Q,True,own C model,0,True,0,65012
+evo_JQQ,evo,EvoApprox mul8u_JQQ,True,own C model,0,True,0,63073
+trumd_2,trumd,TruMD trunc 2,True,k-column truncation formula (lut(2)),0,True,0,65020
+trumd_4,trumd,TruMD trunc 4,True,k-column truncation formula (lut(4)),0,True,0,64976
+trumd_6,trumd,TruMD trunc 6,True,k-column truncation formula (lut(6)),0,True,0,64704
+trumd_8,trumd,TruMD trunc 8,True,k-column truncation formula (lut(8)),0,True,0,63232
+recon_rather_d1,recon,"Recon. Rather D1 (N=4, +12)",False,none (software-only model),,,12,64988

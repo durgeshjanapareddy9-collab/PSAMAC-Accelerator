@@ -1,0 +1,15 @@
+design,module,N,clk_ns,cycles,stimulus,annotated_pins,power_comb_uW,power_seq_uW,power_total_uW,switching_uW,internal_uW,leakage_uW,energy_pJ_per_op,ops_per_cycle,gate_level_check
+approx_mul_N0,approx_mul,0,10.0,5000,uniform_random,956,169.213,199.608,368.821,113.443,255.377,0.000949,3.6882,1,5008/5008 products match LUT
+approx_mul_N1,approx_mul,1,10.0,5000,uniform_random,952,168.824,194.504,363.328,113.073,250.254,0.000942,3.6333,1,5008/5008 products match LUT
+approx_mul_N2,approx_mul,2,10.0,5000,uniform_random,927,162.858,189.015,351.873,111.212,240.66,0.000904,3.5187,1,5008/5008 products match LUT
+approx_mul_N3,approx_mul,3,10.0,5000,uniform_random,919,156.595,183.224,339.818,108.65,231.168,0.000872,3.3982,1,5008/5008 products match LUT
+approx_mul_N4,approx_mul,4,10.0,5000,uniform_random,831,147.883,175.736,323.619,99.15,224.468,0.000884,3.2362,1,5008/5008 products match LUT
+approx_mul_N5,approx_mul,5,10.0,5000,uniform_random,769,134.173,167.483,301.655,90.697,210.958,0.000795,3.0166,1,5008/5008 products match LUT
+approx_mul_N6,approx_mul,6,10.0,5000,uniform_random,686,119.324,156.814,276.137,75.599,200.538,0.000805,2.7614,1,5008/5008 products match LUT
+approx_mul_N7,approx_mul,7,10.0,5000,uniform_random,601,96.308,149.704,246.012,65.42,180.591,0.00061,2.4601,1,5008/5008 products match LUT
+approx_mul_N8,approx_mul,8,10.0,5000,uniform_random,457,74.232,129.008,203.241,49.498,153.742,0.000522,2.0324,1,5008/5008 products match LUT
+approx_mul_N9,approx_mul,9,10.0,5000,uniform_random,347,51.209,107.622,158.831,33.356,125.475,0.000417,1.5883,1,5008/5008 products match LUT
+approx_mul_N10,approx_mul,10,10.0,5000,uniform_random,268,35.976,89.289,125.265,23.248,102.016,0.000325,1.2526,1,5008/5008 products match LUT
+approx_mul_N11,approx_mul,11,10.0,5000,uniform_random,187,21.182,70.403,91.585,13.784,77.801,0.000224,0.9158,1,5008/5008 products match LUT
+approx_mul_N12,approx_mul,12,10.0,5000,uniform_random,138,8.817,53.998,62.815,7.749,55.066,0.000124,0.6282,1,5008/5008 products match LUT
+mul_behav,mul_behav,0,10.0,5000,uniform_random,944,179.083,195.235,374.318,109.859,264.458,0.001115,3.7432,1,5008/5008 products match LUT

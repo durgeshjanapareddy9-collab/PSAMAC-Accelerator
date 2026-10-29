@@ -1,0 +1,15 @@
+design,module,N,clk_ns,cycles,stimulus,annotated_pins,power_comb_uW,power_seq_uW,power_total_uW,switching_uW,internal_uW,leakage_uW,energy_pJ_per_op,ops_per_cycle,gate_level_check
+approx_mul_N0,approx_mul,0,10.0,5000,image,956,82.796,166.123,248.919,50.649,198.269,0.000874,2.4892,1,5008/5008 products match LUT
+approx_mul_N1,approx_mul,1,10.0,5000,image,952,82.309,160.914,243.223,50.313,192.91,0.000867,2.4322,1,5008/5008 products match LUT
+approx_mul_N2,approx_mul,2,10.0,5000,image,927,77.043,154.713,231.756,47.762,183.994,0.000824,2.3176,1,5008/5008 products match LUT
+approx_mul_N3,approx_mul,3,10.0,5000,image,919,70.839,149.098,219.937,45.584,174.352,0.000795,2.1994,1,5008/5008 products match LUT
+approx_mul_N4,approx_mul,4,10.0,5000,image,831,60.547,141.642,202.189,37.721,164.468,0.000815,2.0219,1,5008/5008 products match LUT
+approx_mul_N5,approx_mul,5,10.0,5000,image,769,48.693,134.777,183.47,31.64,151.829,0.000732,1.8347,1,5008/5008 products match LUT
+approx_mul_N6,approx_mul,6,10.0,5000,image,686,35.983,126.566,162.55,22.108,140.441,0.00075,1.6255,1,5008/5008 products match LUT
+approx_mul_N7,approx_mul,7,10.0,5000,image,601,24.919,120.269,145.187,17.077,128.11,0.000541,1.4519,1,5008/5008 products match LUT
+approx_mul_N8,approx_mul,8,10.0,5000,image,457,13.943,103.047,116.99,10.099,106.89,0.000483,1.1699,1,5008/5008 products match LUT
+approx_mul_N9,approx_mul,9,10.0,5000,image,347,6.059,85.618,91.677,4.793,86.883,0.000382,0.9168,1,5008/5008 products match LUT
+approx_mul_N10,approx_mul,10,10.0,5000,image,268,2.591,69.67,72.261,2.396,69.864,0.000306,0.7226,1,5008/5008 products match LUT
+approx_mul_N11,approx_mul,11,10.0,5000,image,187,0.843,55.212,56.054,0.826,55.228,0.000212,0.5605,1,5008/5008 products match LUT
+approx_mul_N12,approx_mul,12,10.0,5000,image,138,0.096,41.406,41.502,0.184,41.318,0.00011,0.415,1,5008/5008 products match LUT
+mul_behav,mul_behav,0,10.0,5000,image,944,84.282,162.996,247.278,47.805,199.472,0.001041,2.4728,1,5008/5008 products match LUT

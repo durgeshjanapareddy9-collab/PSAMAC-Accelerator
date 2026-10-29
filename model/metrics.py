@@ -1,7 +1,9 @@
 """Error metrics for 8x8 approximate multipliers, computed over all 65,536 pairs.
 
-Usage:  python -m model.metrics
-Writes results/error_metrics.csv and figures/error_vs_N.png.
+Usage:  python -m model.metrics              our N sweep
+        python -m model.metrics --baselines  the baseline designs (needs `make baselines`)
+Writes results/error_metrics.csv and figures/error_vs_N.png, or
+results/error_metrics_baselines.csv.
 
 Definitions (following the surveys in docs/REFERENCES.md, refs 9-11), with
     exact  = a * b
@@ -18,10 +20,13 @@ Definitions (following the surveys in docs/REFERENCES.md, refs 9-11), with
                 pairs whose exact product is 0 (a or b is 0)
     EDmax       largest ED
     EDmax_count number of pairs (out of 65,536) whose ED equals EDmax
+    MSE         mean squared error (PSNR, an image-quality measure, is based on it)
 
 metrics_for_lut() works on any 256x256 table, so the baseline designs use the
 same code.
 """
+
+import sys
 
 import matplotlib
 
@@ -51,6 +56,7 @@ def metrics_for_lut(table):
         "MRED": float(np.mean(ed[nonzero] / EXACT[nonzero])),
         "EDmax": ed_max,
         "EDmax_count": int(np.count_nonzero(ed == ed_max)) if ed_max > 0 else 0,
+        "MSE": float(np.mean(error.astype(np.float64) ** 2)),
     }
 
 
@@ -103,7 +109,23 @@ def plot(df, path):
     plt.close(fig)
 
 
+def baseline_metrics():
+    """Metrics for the published baselines and the reconstruction."""
+    from model import designs
+    rows = [{"design": d.name, "family": d.family, **metrics_for_lut(d.lut())}
+            for d in designs.baselines()]
+    return pd.DataFrame(rows)
+
+
 def main():
+    if "--baselines" in sys.argv:
+        df = baseline_metrics()
+        csv = RESULTS / "error_metrics_baselines.csv"
+        df.to_csv(csv, index=False)
+        with pd.option_context("display.width", 140, "display.float_format", "{:.6g}".format):
+            print(df.to_string(index=False))
+        print(f"\nwrote {csv.relative_to(REPO)}")
+        return
     df = sweep()
     RESULTS.mkdir(exist_ok=True)
     FIGURES.mkdir(exist_ok=True)

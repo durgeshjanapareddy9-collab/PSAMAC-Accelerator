@@ -1,3 +1,3 @@
-design,module,N,clk_ns,cycles,stimulus,annotated_pins,power_comb_uW,power_seq_uW,power_total_uW,switching_uW,internal_uW,leakage_uW
-approx_mul_N0,approx_mul,0,10.0,5000,uniform_random,956,169.213,199.608,368.821,113.443,255.377,0.000949
-mul_behav,mul_behav,0,10.0,5000,uniform_random,944,179.083,195.235,374.318,109.859,264.458,0.001115
+design,module,N,clk_ns,cycles,stimulus,annotated_pins,power_comb_uW,power_seq_uW,power_total_uW,switching_uW,internal_uW,leakage_uW,energy_pJ_per_op,ops_per_cycle,gate_level_check
+approx_mul_N0,approx_mul,0,10.0,5000,uniform_random,956,169.213,199.608,368.821,113.443,255.377,0.000949,3.6882,1,5008/5008 products match LUT
+mul_behav,mul_behav,0,10.0,5000,uniform_random,944,179.083,195.235,374.318,109.859,264.458,0.001115,3.7432,1,5008/5008 products match LUT

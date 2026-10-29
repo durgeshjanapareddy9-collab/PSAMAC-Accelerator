@@ -1,0 +1,9 @@
+design,module,N,clk_ns,cycles,stimulus,annotated_pins,power_comb_uW,power_seq_uW,power_total_uW,switching_uW,internal_uW,leakage_uW,energy_pJ_per_op,ops_per_cycle,gate_level_check
+evo_1446,evo_1446,0,10.0,5000,uniform_random,934,185.306,198.206,383.512,115.515,267.996,0.001105,3.8351,1,5008/5008 products match LUT
+evo_GS2,evo_GS2,0,10.0,5000,uniform_random,842,163.832,193.634,357.467,102.052,255.414,0.000997,3.5747,1,5008/5008 products match LUT
+evo_185Q,evo_185Q,0,10.0,5000,uniform_random,550,98.589,164.613,263.202,60.791,202.41,0.000706,2.632,1,5008/5008 products match LUT
+evo_JQQ,evo_JQQ,0,10.0,5000,uniform_random,816,166.341,196.486,362.826,104.185,258.641,0.000975,3.6283,1,5008/5008 products match LUT
+trumd_2,trumd_2,0,10.0,5000,uniform_random,971,178.689,189.345,368.034,117.383,250.649,0.001048,3.6803,1,5008/5008 products match LUT
+trumd_4,trumd_4,0,10.0,5000,uniform_random,866,157.271,175.782,333.053,105.527,227.526,0.000898,3.3305,1,5008/5008 products match LUT
+trumd_6,trumd_6,0,10.0,5000,uniform_random,662,119.816,159.219,279.035,79.21,199.824,0.000758,2.7903,1,5008/5008 products match LUT
+trumd_8,trumd_8,0,10.0,5000,uniform_random,459,77.506,127.32,204.826,49.408,155.418,0.000561,2.0483,1,5008/5008 products match LUT

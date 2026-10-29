@@ -1,0 +1,67 @@
+Startpoint: _09778_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _09737_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+     Cap     Slew    Delay     Time   Description
+---------------------------------------------------------------------------
+            0.000    0.000    0.000   clock clk (rise edge)
+                     0.000    0.000   clock network delay (ideal)
+            0.000    0.000    0.000 ^ _09778_/CLK (sky130_fd_sc_hd__dfxtp_1)
+   0.027    0.258    0.439    0.439 ^ _09778_/Q (sky130_fd_sc_hd__dfxtp_1)
+            0.258    0.000    0.439 ^ _05799_/B (sky130_fd_sc_hd__and2_0)
+   0.005    0.093    0.190    0.630 ^ _05799_/X (sky130_fd_sc_hd__and2_0)
+            0.093    0.000    0.630 ^ _05802_/A (sky130_fd_sc_hd__xnor3_1)
+   0.008    0.093    0.425    1.054 v _05802_/X (sky130_fd_sc_hd__xnor3_1)
+            0.093    0.000    1.054 v _05804_/B (sky130_fd_sc_hd__xor3_1)
+   0.005    0.085    0.375    1.429 v _05804_/X (sky130_fd_sc_hd__xor3_1)
+            0.085    0.000    1.429 v _05807_/A (sky130_fd_sc_hd__xnor3_1)
+   0.008    0.095    0.403    1.832 v _05807_/X (sky130_fd_sc_hd__xnor3_1)
+            0.095    0.000    1.832 v _05811_/B (sky130_fd_sc_hd__xnor3_1)
+   0.007    0.089    0.372    2.204 v _05811_/X (sky130_fd_sc_hd__xnor3_1)
+            0.089    0.000    2.204 v _05813_/B (sky130_fd_sc_hd__xnor2_1)
+   0.007    0.202    0.206    2.411 ^ _05813_/Y (sky130_fd_sc_hd__xnor2_1)
+            0.202    0.000    2.411 ^ _05815_/B (sky130_fd_sc_hd__xor2_1)
+   0.007    0.193    0.220    2.631 ^ _05815_/X (sky130_fd_sc_hd__xor2_1)
+            0.193    0.000    2.631 ^ _05817_/B (sky130_fd_sc_hd__xnor2_1)
+   0.005    0.066    0.106    2.736 v _05817_/Y (sky130_fd_sc_hd__xnor2_1)
+            0.066    0.000    2.736 v _05823_/A2 (sky130_fd_sc_hd__o21ai_0)
+   0.007    0.255    0.235    2.971 ^ _05823_/Y (sky130_fd_sc_hd__o21ai_0)
+            0.255    0.000    2.971 ^ _05854_/A (sky130_fd_sc_hd__maj3_1)
+   0.007    0.086    0.232    3.203 ^ _05854_/X (sky130_fd_sc_hd__maj3_1)
+            0.086    0.000    3.203 ^ _05885_/A1 (sky130_fd_sc_hd__a21oi_1)
+   0.007    0.080    0.089    3.292 v _05885_/Y (sky130_fd_sc_hd__a21oi_1)
+            0.080    0.000    3.292 v _05914_/A (sky130_fd_sc_hd__maj3_1)
+   0.006    0.083    0.374    3.666 v _05914_/X (sky130_fd_sc_hd__maj3_1)
+            0.083    0.000    3.666 v _05937_/A1 (sky130_fd_sc_hd__o21ai_0)
+   0.007    0.240    0.244    3.910 ^ _05937_/Y (sky130_fd_sc_hd__o21ai_0)
+            0.240    0.000    3.910 ^ _05957_/A1 (sky130_fd_sc_hd__a21oi_1)
+   0.007    0.097    0.130    4.041 v _05957_/Y (sky130_fd_sc_hd__a21oi_1)
+            0.097    0.000    4.041 v _05969_/A (sky130_fd_sc_hd__maj3_1)
+   0.007    0.089    0.388    4.429 v _05969_/X (sky130_fd_sc_hd__maj3_1)
+            0.089    0.000    4.429 v _05975_/B (sky130_fd_sc_hd__maj3_1)
+   0.004    0.076    0.350    4.779 v _05975_/X (sky130_fd_sc_hd__maj3_1)
+            0.076    0.000    4.779 v _05983_/B (sky130_fd_sc_hd__nor4b_1)
+   0.016    0.973    0.675    5.453 ^ _05983_/Y (sky130_fd_sc_hd__nor4b_1)
+            0.973    0.000    5.453 ^ _05991_/D (sky130_fd_sc_hd__nand4_1)
+   0.009    0.214    0.263    5.716 v _05991_/Y (sky130_fd_sc_hd__nand4_1)
+            0.214    0.000    5.716 v _05998_/C (sky130_fd_sc_hd__or3_1)
+   0.002    0.062    0.354    6.070 v _05998_/X (sky130_fd_sc_hd__or3_1)
+            0.062    0.000    6.070 v _05999_/A2 (sky130_fd_sc_hd__a21oi_1)
+   0.002    0.085    0.126    6.196 ^ _05999_/Y (sky130_fd_sc_hd__a21oi_1)
+            0.085    0.000    6.196 ^ _09737_/D (sky130_fd_sc_hd__dfxtp_1)
+                              6.196   data arrival time
+
+            0.000   10.000   10.000   clock clk (rise edge)
+                     0.000   10.000   clock network delay (ideal)
+                     0.000   10.000   clock reconvergence pessimism
+                             10.000 ^ _09737_/CLK (sky130_fd_sc_hd__dfxtp_1)
+                    -0.070    9.930   library setup time
+                              9.930   data required time
+---------------------------------------------------------------------------
+                              9.930   data required time
+                             -6.196   data arrival time
+---------------------------------------------------------------------------
+                              3.734   slack (MET)
+
+

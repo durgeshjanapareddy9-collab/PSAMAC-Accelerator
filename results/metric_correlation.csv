@@ -1,0 +1,78 @@
+quality_loss,metric,spearman_rho,p_value,n_designs,kind
+camera_gauss5:PSNR_loss,ER,0.9675047802566972,2.3029958963406846e-10,17,uniform inputs
+camera_gauss5:PSNR_loss,abs_ME,0.7926380368098159,0.00014796220809049526,17,uniform inputs
+camera_gauss5:PSNR_loss,MED,0.760269916044553,0.00039656533206819085,17,uniform inputs
+camera_gauss5:PSNR_loss,MRED,0.8767628870513795,3.86814937004239e-06,17,uniform inputs
+camera_gauss5:PSNR_loss,MSE,0.6474556704379418,0.004956012237412747,17,uniform inputs
+camera_gauss5:PSNR_loss,EDmax,0.6351932524372232,0.0061474070244890815,17,uniform inputs
+camera_gauss5:PSNR_loss,EDmax_count,-0.8669965714763156,6.654049393578916e-06,17,uniform inputs
+camera_gauss5:PSNR_loss,EDmax_freq,-0.5873698222344207,0.013168190329368739,17,uniform inputs
+camera_gauss5:PSNR_loss,wMED,0.9950920245398773,1.7379442393743648e-16,17,workload-aware
+camera_gauss5:PSNR_loss,wMSE,0.9901840490797547,3.1019159596570844e-14,17,workload-aware
+camera_gauss5:PSNR_loss,wER,0.9815001811753375,3.5076453539543467e-12,17,workload-aware
+camera_gauss5:SSIM_loss,ER,0.9675047802566972,2.3029958963406846e-10,17,uniform inputs
+camera_gauss5:SSIM_loss,abs_ME,0.7926380368098159,0.00014796220809049526,17,uniform inputs
+camera_gauss5:SSIM_loss,MED,0.760269916044553,0.00039656533206819085,17,uniform inputs
+camera_gauss5:SSIM_loss,MRED,0.8767628870513795,3.86814937004239e-06,17,uniform inputs
+camera_gauss5:SSIM_loss,MSE,0.6474556704379418,0.004956012237412747,17,uniform inputs
+camera_gauss5:SSIM_loss,EDmax,0.6351932524372232,0.0061474070244890815,17,uniform inputs
+camera_gauss5:SSIM_loss,EDmax_count,-0.8669965714763156,6.654049393578916e-06,17,uniform inputs
+camera_gauss5:SSIM_loss,EDmax_freq,-0.5873698222344207,0.013168190329368739,17,uniform inputs
+camera_gauss5:SSIM_loss,wMED,0.9950920245398773,1.7379442393743648e-16,17,workload-aware
+camera_gauss5:SSIM_loss,wMSE,0.9901840490797547,3.1019159596570844e-14,17,workload-aware
+camera_gauss5:SSIM_loss,wER,0.9815001811753375,3.5076453539543467e-12,17,workload-aware
+astronaut_gauss5:PSNR_loss,ER,0.9748622310571283,3.430592664963616e-11,17,uniform inputs
+astronaut_gauss5:PSNR_loss,abs_ME,0.7877300613496933,0.0001736484802477274,17,uniform inputs
+astronaut_gauss5:PSNR_loss,MED,0.7627223996446966,0.0003699974045746458,17,uniform inputs
+astronaut_gauss5:PSNR_loss,MRED,0.8816678542516669,2.8949074996681487e-06,17,uniform inputs
+astronaut_gauss5:PSNR_loss,MSE,0.6523606376382293,0.00453516026194624,17,uniform inputs
+astronaut_gauss5:PSNR_loss,EDmax,0.637645736037367,0.00589237580635885,17,uniform inputs
+astronaut_gauss5:PSNR_loss,EDmax_count,-0.8719721615565241,5.075039481634379e-06,17,uniform inputs
+astronaut_gauss5:PSNR_loss,EDmax_freq,-0.5947272730348518,0.01179924891553793,17,uniform inputs
+astronaut_gauss5:PSNR_loss,wMED,0.9975460122699388,9.668779619658476e-19,17,workload-aware
+astronaut_gauss5:PSNR_loss,wMSE,0.992638036809816,3.611240618626664e-15,17,workload-aware
+astronaut_gauss5:PSNR_loss,wER,0.8210032962032697,5.361967863718127e-05,17,workload-aware
+astronaut_gauss5:SSIM_loss,ER,0.9895771326579906,4.8560403484927484e-14,17,uniform inputs
+astronaut_gauss5:SSIM_loss,abs_ME,0.7521472392638038,0.000496177502504117,17,uniform inputs
+astronaut_gauss5:SSIM_loss,MED,0.7529124652441217,0.0004859852468902676,17,uniform inputs
+astronaut_gauss5:SSIM_loss,MRED,0.8718579198510922,5.107337482321689e-06,17,uniform inputs
+astronaut_gauss5:SSIM_loss,MSE,0.6474556704379418,0.004956012237412747,17,uniform inputs
+astronaut_gauss5:SSIM_loss,EDmax,0.6327407688370795,0.006411244722477627,17,uniform inputs
+astronaut_gauss5:SSIM_loss,EDmax_count,-0.8719721615565241,5.075039481634379e-06,17,uniform inputs
+astronaut_gauss5:SSIM_loss,EDmax_freq,-0.6118946582358579,0.009041368416301274,17,uniform inputs
+astronaut_gauss5:SSIM_loss,wMED,0.992638036809816,3.611240618626664e-15,17,workload-aware
+astronaut_gauss5:SSIM_loss,wMSE,0.9901840490797547,3.1019159596570844e-14,17,workload-aware
+astronaut_gauss5:SSIM_loss,wER,0.8950787815749933,1.2227311540737561e-06,17,workload-aware
+rather_denoise:PSNR_loss,ER,0.9408316908049013,1.907509584442014e-08,17,uniform inputs
+rather_denoise:PSNR_loss,abs_ME,0.8433195991031424,2.1154660935350264e-05,17,uniform inputs
+rather_denoise:PSNR_loss,MED,0.8298554756378749,3.766863202657871e-05,17,uniform inputs
+rather_denoise:PSNR_loss,MRED,0.9124711024844391,3.30773452870882e-07,17,uniform inputs
+rather_denoise:PSNR_loss,MSE,0.7361422272746082,0.0007537881001065409,17,uniform inputs
+rather_denoise:PSNR_loss,EDmax,0.7312099510449626,0.0008525079484216851,17,uniform inputs
+rather_denoise:PSNR_loss,EDmax_count,-0.9281107237724584,7.915958187803695e-08,17,uniform inputs
+rather_denoise:PSNR_loss,EDmax_freq,-0.5968054237871195,0.011433780983248777,17,uniform inputs
+rather_denoise:PSNR_loss,wMED,1.0,0.0,17,workload-aware
+rather_denoise:PSNR_loss,wMSE,1.0,0.0,17,workload-aware
+rather_denoise:PSNR_loss,wER,0.9651771155992696,3.8432050286588963e-10,17,workload-aware
+rather_denoise:SSIM_loss,ER,0.9482301051493698,7.158201014506857e-09,17,uniform inputs
+rather_denoise:SSIM_loss,abs_ME,0.8383842978647918,2.6293879356119968e-05,17,uniform inputs
+rather_denoise:SSIM_loss,MED,0.8323216137526978,3.401878977022748e-05,17,uniform inputs
+rather_denoise:SSIM_loss,MRED,0.9174033787140845,2.1725699362086633e-07,17,uniform inputs
+rather_denoise:SSIM_loss,MSE,0.7410745035042539,0.0006647324945576508,17,uniform inputs
+rather_denoise:SSIM_loss,EDmax,0.7336760891597854,0.0008018910562177597,17,uniform inputs
+rather_denoise:SSIM_loss,EDmax_count,-0.9331140160839003,4.6767870569732403e-08,17,uniform inputs
+rather_denoise:SSIM_loss,EDmax_freq,-0.604203838131588,0.01020494855569512,17,uniform inputs
+rather_denoise:SSIM_loss,wMED,0.9975186104218362,1.0507677930729943e-18,17,workload-aware
+rather_denoise:SSIM_loss,wMSE,0.9975186104218362,1.0507677930729943e-18,17,workload-aware
+rather_denoise:SSIM_loss,wER,0.9726398252559648,6.434466355506394e-11,17,workload-aware
+mnist_cnn:top1_drop_pp,ER,0.6120763920515585,0.009015213850181857,17,uniform inputs
+mnist_cnn:top1_drop_pp,abs_ME,0.46457610168956204,0.06026999144380141,17,uniform inputs
+mnist_cnn:top1_drop_pp,MED,0.45813363751142805,0.06440245539728691,17,uniform inputs
+mnist_cnn:top1_drop_pp,MRED,0.5012376087826645,0.04039231676824735,17,uniform inputs
+mnist_cnn:top1_drop_pp,MSE,0.399019619768018,0.1125997476498503,17,uniform inputs
+mnist_cnn:top1_drop_pp,EDmax,0.4199558343854758,0.09329393887440396,17,uniform inputs
+mnist_cnn:top1_drop_pp,EDmax_count,-0.5328153910079547,0.027655684072954347,17,uniform inputs
+mnist_cnn:top1_drop_pp,EDmax_freq,-0.07512406421558364,0.7744523052953388,17,uniform inputs
+mnist_cnn:top1_drop_pp,wMED,0.6231602703784478,0.007530509533679058,17,workload-aware
+mnist_cnn:top1_drop_pp,wMSE,0.571435504852964,0.016563128922851913,17,workload-aware
+mnist_cnn:top1_drop_pp,wER,0.6490226531411898,0.004818270966058646,17,workload-aware
