@@ -1,0 +1,37 @@
+Startpoint: en (input port clocked by clk)
+Endpoint: _11745_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+     Cap     Slew    Delay     Time   Description
+---------------------------------------------------------------------------
+            0.000    0.000    0.000   clock clk (rise edge)
+                     0.000    0.000   clock network delay (ideal)
+                     0.000    0.000 ^ input external delay
+   1.358    0.000    0.000    0.000 ^ en (in)
+            0.000    0.000    0.000 ^ _05847_/A (sky130_fd_sc_hd__clkinv_1)
+   0.679    5.164    3.890    3.890 v _05847_/Y (sky130_fd_sc_hd__clkinv_1)
+            5.164    0.000    3.890 v _06568_/A (sky130_fd_sc_hd__nor4b_1)
+   0.014    0.956    1.925    5.816 ^ _06568_/Y (sky130_fd_sc_hd__nor4b_1)
+            0.956    0.000    5.816 ^ _06576_/D (sky130_fd_sc_hd__nand4_1)
+   0.007    0.195    0.242    6.057 v _06576_/Y (sky130_fd_sc_hd__nand4_1)
+            0.195    0.000    6.057 v _06582_/C (sky130_fd_sc_hd__or3_1)
+   0.002    0.062    0.347    6.405 v _06582_/X (sky130_fd_sc_hd__or3_1)
+            0.062    0.000    6.405 v _06583_/A2 (sky130_fd_sc_hd__a21oi_1)
+   0.002    0.085    0.126    6.530 ^ _06583_/Y (sky130_fd_sc_hd__a21oi_1)
+            0.085    0.000    6.530 ^ _11745_/D (sky130_fd_sc_hd__dfxtp_1)
+                              6.530   data arrival time
+
+            0.000   10.000   10.000   clock clk (rise edge)
+                     0.000   10.000   clock network delay (ideal)
+                     0.000   10.000   clock reconvergence pessimism
+                             10.000 ^ _11745_/CLK (sky130_fd_sc_hd__dfxtp_1)
+                    -0.070    9.930   library setup time
+                              9.930   data required time
+---------------------------------------------------------------------------
+                              9.930   data required time
+                             -6.530   data arrival time
+---------------------------------------------------------------------------
+                              3.400   slack (MET)
+
+

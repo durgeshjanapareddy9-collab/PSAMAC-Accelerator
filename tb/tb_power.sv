@@ -5,8 +5,15 @@
 // RTL, so the VCD contains the activity of every internal wire. OpenSTA then
 // reads the VCD (read_vcd) and computes power from it.
 //
-// Stimulus: uniform random 8-bit a and b, a new pair every clock cycle.
-// (Milestone 1 uses random stimulus; Milestone 2 switches to image data.)
+// Stimulus, a new pair every clock cycle, either
+//   STIM_FILE = ""      : uniform random 8-bit a and b (Milestone 1), or
+//   STIM_FILE = <file>  : pairs "a b" read from a file, one per line. flow/stimulus.py
+//                         writes image data there: a = pixel, b = filter weight, in
+//                         the order one PE of the array consumes them (Milestone 2).
+//
+// If DUMP_FILE is set, every output is also written as "a b p" (inputs and the
+// product that came out two cycles later), so flow/power.py can check the
+// gate-level netlist of ANY design, exact or approximate, against its LUT.
 //
 // Timeline:
 //   - clock period CLK_NS (10 ns = 100 MHz), same for every design
@@ -27,6 +34,8 @@ module tb_power;
     parameter int    SEED        = 1;          // random seed (fixed => repeatable)
     parameter int    CHECK_EXACT = 0;          // 1: compare p_out with a*b
     parameter string VCD_FILE    = "build/power.vcd";
+    parameter string STIM_FILE   = "";         // "" = uniform random
+    parameter string DUMP_FILE   = "";         // "" = no output dump
 
     logic        clk = 0;
     logic [7:0]  a_in = 0, b_in = 0;
@@ -40,11 +49,21 @@ module tb_power;
     // exp_prev = product of the inputs applied one falling edge ago. When we
     // check at edge t+2, it holds the product of the inputs from edge t.
     logic [15:0] exp_prev = 0;
+    logic [7:0]  a_prev = 0, b_prev = 0;       // the inputs that exp_prev belongs to
     integer seed = SEED;
     integer errors = 0, checked = 0;
     integer cyc;
+    integer fstim = 0, fdump = 0, va, vb, r;
 
     initial begin
+        if (STIM_FILE != "") begin
+            fstim = $fopen(STIM_FILE, "r");
+            if (fstim == 0) begin
+                $display("ERROR: cannot open %s", STIM_FILE);
+                $finish;
+            end
+        end
+        if (DUMP_FILE != "") fdump = $fopen(DUMP_FILE, "w");
         for (cyc = 0; cyc < WARMUP + CYCLES; cyc++) begin
             if (cyc == WARMUP) begin
                 // Start recording. Depth 2 = the netlist's top level plus the
@@ -63,10 +82,25 @@ module tb_power;
                         $display("MISMATCH cycle %0d: p_out=%0d expected=%0d", cyc, p_out, exp_prev);
                 end
             end
+            if (fdump != 0 && cyc >= 2)
+                $fdisplay(fdump, "%0d %0d %0d", a_prev, b_prev, p_out);
             exp_prev = a_in * b_in;                 // product of the inputs applied at cyc-1
-            a_in = $random(seed);
-            b_in = $random(seed);
+            a_prev   = a_in;
+            b_prev   = b_in;
+            if (fstim != 0) begin
+                r = $fscanf(fstim, "%d %d\n", va, vb);
+                if (r != 2) begin
+                    $display("ERROR: %s ran out of stimulus at cycle %0d", STIM_FILE, cyc);
+                    $finish;
+                end
+                a_in = va[7:0];
+                b_in = vb[7:0];
+            end else begin
+                a_in = $random(seed);
+                b_in = $random(seed);
+            end
         end
+        if (fdump != 0) $fclose(fdump);
         $dumpflush;
         if (CHECK_EXACT)
             $display("tb_power: gate-level check %0d/%0d outputs correct",

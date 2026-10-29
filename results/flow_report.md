@@ -144,4 +144,4 @@ Power for every N is not measured yet (Milestone 2, with image stimulus).
 | `wrap_<design>.timing.txt` | OpenSTA critical (setup) path, step by step |
 | `wrap_<design>.hold.txt` | OpenSTA shortest (hold) path, flip-flop to flip-flop |
 | `wrap_<design>.checks.txt` | OpenSTA constraint check (empty = no problems) |
-| `wrap_<design>.power.txt` | OpenSTA power report (N = 0 and a*b) |
+| `wrap_<design>_<stimulus>.power.txt` | OpenSTA power report, stimulus random or image |

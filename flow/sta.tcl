@@ -26,7 +26,8 @@
 
 read_liberty $::env(LIB)
 read_verilog $::env(NETLIST)
-link_design  mul_wrap
+# Top module: mul_wrap, or systolic_array for the array (env TOP).
+link_design  [expr {[info exists ::env(TOP)] ? $::env(TOP) : "mul_wrap"}]
 # The 10 ns clock does not change the minimum period: we ask OpenSTA for the
 # *minimum* period the design could run at. Slacks are reported at 10 ns.
 read_sdc     [file join [file dirname [info script]] mul_wrap.sdc]

@@ -172,8 +172,8 @@ def report():
              "contents": "OpenSTA shortest (hold) path, flip-flop to flip-flop"},
             {"file (results/synth/)": "`wrap_<design>.checks.txt`",
              "contents": "OpenSTA constraint check (empty = no problems)"},
-            {"file (results/synth/)": "`wrap_<design>.power.txt`",
-             "contents": "OpenSTA power report (N = 0 and a*b)"},
+            {"file (results/synth/)": "`wrap_<design>_<stimulus>.power.txt`",
+             "contents": "OpenSTA power report, stimulus random or image"},
         ])),
     ]
     return "\n\n".join(sections) + "\n"

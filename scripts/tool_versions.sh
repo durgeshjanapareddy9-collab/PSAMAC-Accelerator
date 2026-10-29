@@ -49,6 +49,11 @@ ver() {
         printf '%-12s %s\n' "lib md5:" "NOT FOUND"
     fi
     echo
+    echo "## Baseline sources"
+    # EvoApproxLib files were copied from this commit (see baselines/README.md).
+    printf '%-12s %s\n' "evoapprox:" "ehw-fit/evoapproxlib ec28be83bfce1b8e8b92bd456be520d323a568b5 (vendored)"
+    printf '%-12s %s\n' "trumd:" "Hassan313/Approximate-Multiplier $(grep -oP '^COMMIT=\K\w+' baselines/trumd/fetch.sh) (fetched)"
+    echo
     echo "## Python"
     ver python "$PYTHON" --version
     "$PYTHON" -m pip freeze 2>/dev/null \

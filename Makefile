@@ -7,15 +7,17 @@
 #   make metrics    error metrics (MED, NMED, MRED, ER, ME, EDmax)
 #   make synth      Yosys synthesis to sky130 (area)
 #   make power      OpenSTA power from simulation activity
+#   make test-mac   MAC PE and 4x4 systolic array vs the golden model, N = 0..12
 #   make sweep      area/delay/power for every N
+#   make array      area/delay/power of the 4x4 systolic array for every N
 #   make report     results/flow_report.md: all Yosys/OpenSTA/power results in one file
 #   make diagrams   Graphviz circuit diagrams from Yosys `show` -> figures/yosys_*
-#   make baselines  EvoApproxLib / TruMD designs through the same flow
-#   make eval       image convolution quality (PSNR, SSIM)
-#   make cnn        CNN top-1 accuracy
+#   make baselines  EvoApproxLib / TruMD: verify, metrics, same flow
+#   make eval       image convolution quality (PSNR, SSIM), every design
+#   make cnn        MNIST CNN top-1 accuracy, every design (needs make venv-cnn)
 #   make analysis   which error metric predicts quality loss
-#   make figures    regenerate every plot in figures/
-#   make all        everything above, in order
+#   make figures    regenerate every figure in figures/ (plots + circuit diagrams)
+#   make all        everything above, in order (about 20 minutes on a 16-core laptop)
 #
 # Paths to tools and the liberty file live in flow/config.mk.
 
@@ -24,17 +26,28 @@ include flow/config.mk
 # Truncation depths covered by the sweep.
 NS := 0 1 2 3 4 5 6 7 8 9 10 11 12
 
-.PHONY: venv versions gen test test-model metrics synth synth-one power sweep report diagrams baselines eval cnn \
+# Designs simulated in parallel by the power flow (the array is slow).
+JOBS ?= 8
+
+.PHONY: venv venv-cnn versions gen test test-model test-mac metrics synth synth-one power sweep array report diagrams baselines eval cnn \
         analysis figures all clean
 
 # ---- Setup -------------------------------------------------------------------
 
 venv: $(VENV)/bin/activate
 
+# "python -m pip" instead of .venv/bin/pip: this folder's path contains a
+# space, which breaks the #! line of the pip script.
 $(VENV)/bin/activate: requirements.txt
 	python3 -m venv $(VENV)
-	$(VENV)/bin/pip install --upgrade pip
-	$(VENV)/bin/pip install -r requirements.txt
+	$(PYTHON) -m pip install --upgrade pip
+	$(PYTHON) -m pip install -r requirements.txt
+	touch $@
+
+# torch and torchvision (CPU builds), only for the CNN step.
+venv-cnn: $(VENV)/.cnn-installed
+$(VENV)/.cnn-installed: requirements-cnn.txt | venv
+	$(PYTHON) -m pip install -r requirements-cnn.txt
 	touch $@
 
 versions: venv
@@ -64,6 +77,26 @@ sim-N%: venv
 # Simulate and check a single N:  make check-N4
 check-N%: sim-N%
 	$(PYTHON) -m model.check_rtl $*
+
+# MAC PE and 4x4 systolic array vs the LUT golden model, every N (M2.1, M2.2, M2.11).
+MAC_SRCS := $(MUL_SRCS) rtl/mac_pe.sv rtl/systolic_array.sv
+test-mac: $(addprefix pe-N,$(NS)) $(addprefix array-N,$(NS))
+
+# One N:  make pe-N4  /  make array-N4
+pe-N%: venv
+	@mkdir -p build results
+	$(PYTHON) -m model.systolic gen-pe $*
+	$(IVERILOG) -g2012 -Wall -Wno-timescale -P tb_mac_pe.N=$* -o build/tb_pe_N$*.vvp tb/tb_mac_pe.sv $(MAC_SRCS)
+	$(VVP) -n build/tb_pe_N$*.vvp
+	$(PYTHON) -m model.systolic check-pe $*
+
+array-N%: venv
+	@mkdir -p build results
+	$(PYTHON) -m model.systolic gen-array $*
+	$(IVERILOG) -g2012 -Wall -Wno-timescale -P tb_systolic_array.N=$* -o build/tb_array_N$*.vvp \
+	    tb/tb_systolic_array.sv $(MAC_SRCS)
+	$(VVP) -n build/tb_array_N$*.vvp
+	$(PYTHON) -m model.systolic check-array $*
 
 # Python model unit tests, and build the cached LUTs in results/.
 test-model: venv
@@ -99,10 +132,22 @@ power: synth
 	$(PYTHON) flow/power.py --out results/power_n0.csv --design approx_mul:0 --design mul_behav:0 \
 	    --lib $(LIB) --sta $(STA) --cell-models $(CELL_MODELS) --iverilog $(IVERILOG) --vvp $(VVP)
 
-# Area and delay for every N, plus a*b -> results/ppa_mul.csv
-# (power across N is added in Milestone 2 with image stimulus)
+# Area, delay and power for every N, plus a*b -> results/ppa_mul.csv (M2.5)
+# Power is measured twice: uniform random inputs and image data (M2.4);
+# the details are in results/power_mul_<stimulus>.csv.
+POWER = $(PYTHON) flow/power.py --lib $(LIB) --sta $(STA) --cell-models $(CELL_MODELS) \
+        --iverilog $(IVERILOG) --vvp $(VVP)
+MUL_DESIGNS := $(foreach n,$(NS),--design approx_mul:$(n)) --design mul_behav:0
 sweep: venv $(SYNTH_LIB)
-	$(PPA) --out results/ppa_mul.csv $(foreach n,$(NS),--design approx_mul:$(n)) --design mul_behav:0
+	$(PPA) --out results/ppa_mul.csv $(MUL_DESIGNS)
+	$(POWER) --stimulus random --out results/power_mul_random.csv --merge-into results/ppa_mul.csv $(MUL_DESIGNS)
+	$(POWER) --stimulus image --out results/power_mul_image.csv --merge-into results/ppa_mul.csv $(MUL_DESIGNS)
+
+# The 4x4 systolic array at every N: area, delay, power (image tiles) -> results/ppa_array.csv
+ARRAY_DESIGNS := $(foreach n,$(NS),--design array:$(n))
+array: venv $(SYNTH_LIB)
+	$(PPA) --out results/ppa_array.csv $(ARRAY_DESIGNS)
+	$(POWER) --stimulus image --jobs $(JOBS) --out results/power_array_image.csv --merge-into results/ppa_array.csv $(ARRAY_DESIGNS)
 
 # One readable report of the flow results -> results/flow_report.md
 # (reads the CSVs and reports written by `make synth power sweep`).
@@ -114,24 +159,40 @@ report: venv
 diagrams: venv
 	$(PYTHON) flow/diagrams.py --lib $(LIB) --yosys $(YOSYS) --dot $(DOT)
 
-baselines:
-	@echo "make baselines: not implemented yet (M2.6/M2.7)"; false
+# Baselines (M2.6, M2.7): fetch TruMD, verify every baseline's RTL against its own
+# model on all 65,536 pairs and build its LUT, error metrics, then the identical
+# flow (same wrapper, clock, corner and stimulus) -> results/ppa_baselines.csv
+BASE_DESIGNS := --design evo_1446 --design evo_GS2 --design evo_185Q --design evo_JQQ \
+                --design trumd_2 --design trumd_4 --design trumd_6 --design trumd_8
+baselines: venv $(SYNTH_LIB)
+	$(PYTHON) baselines/verify.py --iverilog $(IVERILOG) --vvp $(VVP)
+	$(PYTHON) -m model.metrics --baselines
+	$(PPA) --out results/ppa_baselines.csv $(BASE_DESIGNS)
+	$(POWER) --stimulus random --out results/power_baselines_random.csv --merge-into results/ppa_baselines.csv $(BASE_DESIGNS)
+	$(POWER) --stimulus image --out results/power_baselines_image.csv --merge-into results/ppa_baselines.csv $(BASE_DESIGNS)
 
-eval:
-	@echo "make eval: not implemented yet (M2.3/M2.8)"; false
+# Image filtering quality (PSNR, SSIM) for every design -> results/image_quality.csv (M2.3, M2.8)
+eval: venv
+	$(PYTHON) -m eval.image_conv
 
-cnn:
-	@echo "make cnn: not implemented yet (M2.9)"; false
+# MNIST CNN top-1 for every design -> results/cnn_accuracy.csv (M2.9).
+# Needs torch + torchvision (CPU): make venv-cnn
+cnn: venv-cnn
+	$(PYTHON) -m eval.cnn
 
-analysis:
-	@echo "make analysis: not implemented yet (M2.10)"; false
+# Which error metric predicts quality loss -> results/metric_correlation.csv (M2.10)
+analysis: venv-cnn
+	$(PYTHON) -m eval.analysis
 
-figures:
-	@echo "make figures: not implemented yet (M2.12)"; false
+# Every figure in figures/ (M2.12): the plots from the CSVs in results/, plus
+# the Yosys circuit diagrams (which read the netlists written by `make sweep`).
+figures: venv diagrams
+	$(PYTHON) -m eval.figures
 
-all: test metrics synth power sweep report baselines eval cnn analysis figures
+# Everything, in dependency order.
+all: test test-mac metrics synth power sweep array report baselines eval cnn analysis figures
 
-# Remove generated files (keeps .venv/).
+# Remove generated files (keeps .venv/ and the trained CNN weights).
 clean:
-	rm -rf results/*.npy results/rtl_dump_*.txt results/*.vcd results/*.saif \
-	       results/synth build
+	rm -rf results/*.npy results/rtl_dump_*.txt results/pe_dump_*.txt results/array_dump_*.txt \
+	       results/*.vcd results/*.saif results/synth build

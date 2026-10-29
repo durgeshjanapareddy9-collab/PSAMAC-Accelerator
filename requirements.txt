@@ -6,4 +6,4 @@ matplotlib
 scikit-image
 scipy
 pytest
-# torch and torchvision (CPU builds) are added later, only for the CNN step (M2.9).
+# torch and torchvision (CPU builds) for the CNN step are in requirements-cnn.txt.

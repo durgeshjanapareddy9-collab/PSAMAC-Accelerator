@@ -1,0 +1,14 @@
+design,module,N,clk_ns,cycles,stimulus,annotated_pins,power_comb_uW,power_seq_uW,power_total_uW,switching_uW,internal_uW,leakage_uW,energy_pJ_per_op,ops_per_cycle,gate_level_check
+array_N0,systolic_array,0,10.0,1942,image,24588,1274.566,3195.476,4470.04,781.033,3688.985,0.023003,4.3404,10.2987,800/800 sums match LUT golden model
+array_N1,systolic_array,1,10.0,1942,image,23850,1236.412,3113.284,4349.693,747.846,3601.824,0.022453,4.2236,10.2987,800/800 sums match LUT golden model
+array_N2,systolic_array,2,10.0,1942,image,23292,1162.189,3026.027,4188.214,707.995,3480.197,0.021801,4.0668,10.2987,800/800 sums match LUT golden model
+array_N3,systolic_array,3,10.0,1942,image,22337,1067.355,2927.569,3994.921,646.789,3348.111,0.02089,3.8791,10.2987,800/800 sums match LUT golden model
+array_N4,systolic_array,4,10.0,1942,image,20794,930.053,2822.085,3752.135,539.612,3212.502,0.019907,3.6433,10.2987,800/800 sums match LUT golden model
+array_N5,systolic_array,5,10.0,1942,image,19431,729.947,2720.23,3450.173,441.585,3008.57,0.018283,3.3501,10.2987,800/800 sums match LUT golden model
+array_N6,systolic_array,6,10.0,1942,image,17447,552.159,2610.676,3162.833,335.04,2827.776,0.017577,3.0711,10.2987,800/800 sums match LUT golden model
+array_N7,systolic_array,7,10.0,1942,image,15531,381.63,2495.792,2877.421,236.364,2641.042,0.015572,2.794,10.2987,800/800 sums match LUT golden model
+array_N8,systolic_array,8,10.0,1942,image,13072,248.513,2228.631,2477.143,157.273,2319.857,0.013795,2.4053,10.2987,800/800 sums match LUT golden model
+array_N9,systolic_array,9,10.0,1942,image,10705,137.308,1956.766,2094.073,87.848,2006.214,0.011167,2.0333,10.2987,800/800 sums match LUT golden model
+array_N10,systolic_array,10,10.0,1942,image,8835,62.581,1701.387,1763.968,41.791,1722.167,0.009664,1.7128,10.2987,800/800 sums match LUT golden model
+array_N11,systolic_array,11,10.0,1942,image,7049,20.684,1457.945,1478.629,15.155,1463.467,0.006971,1.4357,10.2987,800/800 sums match LUT golden model
+array_N12,systolic_array,12,10.0,1942,image,5687,7.31,1231.809,1239.119,5.756,1233.358,0.005224,1.2032,10.2987,800/800 sums match LUT golden model

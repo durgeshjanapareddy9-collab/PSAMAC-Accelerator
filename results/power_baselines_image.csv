@@ -1,0 +1,9 @@
+design,module,N,clk_ns,cycles,stimulus,annotated_pins,power_comb_uW,power_seq_uW,power_total_uW,switching_uW,internal_uW,leakage_uW,energy_pJ_per_op,ops_per_cycle,gate_level_check
+evo_1446,evo_1446,0,10.0,5000,image,934,81.789,165.63,247.419,49.352,198.066,0.001035,2.4742,1,5008/5008 products match LUT
+evo_GS2,evo_GS2,0,10.0,5000,image,842,66.725,161.971,228.696,39.962,188.734,0.000929,2.287,1,5008/5008 products match LUT
+evo_185Q,evo_185Q,0,10.0,5000,image,550,21.696,135.43,157.126,14.258,142.868,0.000674,1.5713,1,5008/5008 products match LUT
+evo_JQQ,evo_JQQ,0,10.0,5000,image,816,74.357,165.172,239.529,44.345,195.183,0.000934,2.3953,1,5008/5008 products match LUT
+trumd_2,trumd_2,0,10.0,5000,image,971,81.9,154.526,236.426,50.123,186.302,0.000988,2.3643,1,5008/5008 products match LUT
+trumd_4,trumd_4,0,10.0,5000,image,866,62.388,141.176,203.564,40.024,163.539,0.00082,2.0356,1,5008/5008 products match LUT
+trumd_6,trumd_6,0,10.0,5000,image,662,36.722,127.127,163.849,23.63,140.219,0.000686,1.6385,1,5008/5008 products match LUT
+trumd_8,trumd_8,0,10.0,5000,image,459,16.727,102.424,119.151,10.758,108.392,0.000526,1.1915,1,5008/5008 products match LUT

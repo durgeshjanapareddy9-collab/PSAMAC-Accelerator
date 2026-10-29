@@ -1,0 +1,49 @@
+
+16. Printing statistics.
+
+=== systolic_array ===
+
+   Number of wires:               2159
+   Number of wire bits:           2604
+   Number of public wires:         186
+   Number of public wire bits:     631
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2378
+     sky130_fd_sc_hd__a21oi_1      241
+     sky130_fd_sc_hd__a22o_1        15
+     sky130_fd_sc_hd__a22oi_1       17
+     sky130_fd_sc_hd__a2bb2oi_1     16
+     sky130_fd_sc_hd__a31oi_1        1
+     sky130_fd_sc_hd__a41o_1        15
+     sky130_fd_sc_hd__and2_0        32
+     sky130_fd_sc_hd__and3_1        46
+     sky130_fd_sc_hd__and4_1        17
+     sky130_fd_sc_hd__clkinv_1      49
+     sky130_fd_sc_hd__conb_1         1
+     sky130_fd_sc_hd__dfxtp_1      404
+     sky130_fd_sc_hd__maj3_1       112
+     sky130_fd_sc_hd__mux2_1       180
+     sky130_fd_sc_hd__nand2_1      288
+     sky130_fd_sc_hd__nand2b_1      16
+     sky130_fd_sc_hd__nand3_1       15
+     sky130_fd_sc_hd__nand3b_1      16
+     sky130_fd_sc_hd__nand4_1       32
+     sky130_fd_sc_hd__nor2_1       255
+     sky130_fd_sc_hd__nor2b_1       64
+     sky130_fd_sc_hd__nor3_1        80
+     sky130_fd_sc_hd__nor3b_1        1
+     sky130_fd_sc_hd__o2111a_1      16
+     sky130_fd_sc_hd__o21a_1         2
+     sky130_fd_sc_hd__o21ai_0       96
+     sky130_fd_sc_hd__o21ba_1       31
+     sky130_fd_sc_hd__o31ai_1       16
+     sky130_fd_sc_hd__or4_1         16
+     sky130_fd_sc_hd__xnor2_1      112
+     sky130_fd_sc_hd__xnor3_1       80
+     sky130_fd_sc_hd__xor2_1        49
+     sky130_fd_sc_hd__xor3_1        47
+
+   Chip area for module '\systolic_array': 22719.289600
+
